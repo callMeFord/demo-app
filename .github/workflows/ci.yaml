@@ -41,9 +41,9 @@ jobs:
       run: |
         git config --global user.name "Deploy Bot"
         git config --global user.email "no-reply@akuity.io"
-        git clone https://bot:${{ secrets.DEPLOY_PAT }}@github.com/${{ github.repository_owner }}/demo-app-deploy.git
+        git clone https://bot:${{ secrets.DEPLOY_PAT }}@github.com/callmeford/demo-app-deploy.git
         cd demo-app-deploy/env/dev
-        kustomize edit set image ghcr.io/argocon2022-workshop/demo-app=ghcr.io/${{ github.repository_owner }}/demo-app:${{ github.sha }}
-        git commit -a -m "Deploy dev: ghcr.io/${{ github.repository_owner }}/demo-app:${{ github.sha }}"
-        git notes append -m "image: ghcr.io/${{ github.repository_owner }}/demo-app:${{ github.sha }}"
+        kustomize edit set image ghcr.io/argocon2022-workshop/demo-app=ghcr.io/callmeford/demo-app:${{ github.sha }}
+        git commit -a -m "Deploy dev: ghcr.io/callmeford/demo-app:${{ github.sha }}"
+        git notes append -m "image: ghcr.io/callmeford/demo-app:${{ github.sha }}"
         git push origin "refs/notes/*" --force && git push --force
